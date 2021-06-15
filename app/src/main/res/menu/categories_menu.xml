@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/cat"
+        android:title="Categories"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_drop">
+        <menu>
+
+            <item
+                android:id="@+id/expenses"
+                android:title="Expenses"
+                /> <item
+                android:id="@+id/income"
+                android:title="Income"
+                />
+
+        </menu>
+    </item>
+
+</menu>
