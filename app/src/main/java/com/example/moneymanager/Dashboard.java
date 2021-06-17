@@ -110,6 +110,10 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerview.setLayoutManager(manager);
 
+        NavigationView navigationView=(NavigationView)findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
+        navigationView.setNavigationItemSelectedListener(this);
+
         amtCapital = findViewById(R.id.amtCapital);
         amtDate = findViewById(R.id.amtDate);
     }
@@ -376,7 +380,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        String itemName = (String) item.getTitle();
         closeDrawer();
         Intent intent;
         switch (item.getItemId()) {
@@ -388,6 +391,8 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                 intent = new Intent(Dashboard.this, Categories.class);
                 startActivity(intent);
                 break;
+
+
         }
         return true;
     }

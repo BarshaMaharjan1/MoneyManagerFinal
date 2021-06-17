@@ -100,7 +100,14 @@ public class Categories extends AppCompatActivity {
         images.add(R.drawable.lottery);
         images.add(R.drawable.dividends);
         images.add(R.drawable.investments);
-        images.add(R.drawable.others);
+        images.add(R.drawable.skateboard);
+        images.add(R.drawable.sandwich);
+        images.add(R.drawable.tv);
+        images.add(R.drawable.tree);
+        images.add(R.drawable.travel);
+        images.add(R.drawable.swim);
+        images.add(R.drawable.icecream);
+        images.add(R.drawable.health);
 
         recyclerView = findViewById(R.id.recylcerview1);
 
