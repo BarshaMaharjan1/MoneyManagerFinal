@@ -103,6 +103,8 @@ public class Categories extends AppCompatActivity {
 
 
 
+
+
         recyclerView = findViewById(R.id.recylcerview1);
 
        adapter = new CategoriesAdapter(this, images, new CategoriesAdapter.CategoryCallback() {
@@ -126,31 +128,4 @@ public class Categories extends AppCompatActivity {
             onBackPressed();
         }
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.categories_menu, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.expenses:
-//                Intent intent=new Intent(this, ExpensesActivity.class);
-//                startActivity(intent);
-//                Toast.makeText(this, "Expenses" , Toast.LENGTH_SHORT).show();
-//
-//                return true;
-//
-//            case R.id.income:
-//              Intent intent1=new Intent(this,IncomeActivity.class);
-//              startActivity(intent1);
-//
-//       Toast.makeText(this, "Income" , Toast.LENGTH_SHORT).show();
-//                return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
 }

@@ -85,7 +85,6 @@ public class SplashActivity extends AppCompatActivity {
     private void imagesArray() {
 
         titles.add("food");
-        titles.add("bills");
         titles.add("transportation");
         titles.add("home");
         titles.add("car");
@@ -97,7 +96,6 @@ public class SplashActivity extends AppCompatActivity {
         titles.add("telephone");
         titles.add("cigarette");
         titles.add("health");
-        titles.add("sport");
         titles.add("baby");
         titles.add("pet");
         titles.add("beauty");
@@ -106,20 +104,14 @@ public class SplashActivity extends AppCompatActivity {
         titles.add("wine");
         titles.add("vegetables");
         titles.add("snacks");
-        titles.add("gift");
-        titles.add("social");
-        titles.add("travel");
-        titles.add("education");
         titles.add("fruits");
         titles.add("book");
         titles.add("office");
-        titles.add("pizza");
         titles.add("fish");
         titles.add("ac");
         titles.add("others");
 
         images.add(R.drawable.food);
-        images.add(R.drawable.bill);
         images.add(R.drawable.transportation);
         images.add(R.drawable.home);
         images.add(R.drawable.car);
@@ -131,7 +123,6 @@ public class SplashActivity extends AppCompatActivity {
         images.add(R.drawable.telephone);
         images.add(R.drawable.cigarette);
         images.add(R.drawable.health);
-        images.add(R.drawable.sport);
         images.add(R.drawable.baby);
         images.add(R.drawable.cat);
         images.add(R.drawable.beauty);
@@ -140,14 +131,9 @@ public class SplashActivity extends AppCompatActivity {
         images.add(R.drawable.wine);
         images.add(R.drawable.vegetables);
         images.add(R.drawable.snacks);
-        images.add(R.drawable.gift);
-        images.add(R.drawable.social);
-        images.add(R.drawable.travel);
-        images.add(R.drawable.education);
         images.add(R.drawable.fruits);
         images.add(R.drawable.books);
         images.add(R.drawable.office);
-        images.add(R.drawable.pizza);
         images.add(R.drawable.fish);
         images.add(R.drawable.ac);
         images.add(R.drawable.others);
@@ -166,8 +152,6 @@ public class SplashActivity extends AppCompatActivity {
         titles1.add("Salary");
         titles1.add("Awards");
         titles1.add("Grants");
-        titles1.add("Sale");
-        titles1.add("Rental");
         titles1.add("Refunds");
         titles1.add("Coupons");
         titles1.add("Lottery");
@@ -178,8 +162,6 @@ public class SplashActivity extends AppCompatActivity {
         images1.add(R.drawable.salary);
         images1.add(R.drawable.awards);
         images1.add(R.drawable.grants);
-        images1.add(R.drawable.sale);
-        images1.add(R.drawable.rental);
         images1.add(R.drawable.refunds);
         images1.add(R.drawable.coupons);
         images1.add(R.drawable.lottery);
