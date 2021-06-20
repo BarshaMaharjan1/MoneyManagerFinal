@@ -192,16 +192,19 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         txtCal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int m = calendar.get(Calendar.MONTH) + 1;
-                int d = calendar.get(Calendar.DAY_OF_MONTH);
-                String month = m < 10 ? "0" + m : "" + m;
-                String day = d < 10 ? "0" + d : "" + d;
-                txtCal.setText(year + "-" + month + "-" + day);
-                Toast.makeText(Dashboard.this, "Initial Budget Established", Toast.LENGTH_SHORT).show();
-                utils.saveFirstLogin(false);
-                dialog.dismiss();
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(Dashboard.this, (datePicker, y, m, d) -> {
+                    m++;
+                    String month1 = m < 10 ? "0" + m : m + "";
+                    String day1 = d < 10 ? "0" + d : d + "";
+                    txtCal.setText(y + "-" + month1 + "-" + day1);
+                }, year, month, day);
+                datePickerDialog.show();
+
             }
         });
 
@@ -341,7 +344,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         }
     }
-
+    String updateDate;
     private void displayCalendar() {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
@@ -351,10 +354,11 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             m++;
             String month1 = m < 10 ? "0" + m : m + "";
             String day1 = d < 10 ? "0" + d : d + "";
-            filterByDate(y + "-" + month1 + "-" + day1);
+            updateDate =  y + "-" + month1 + "-" + day1;
         }, year, month, day);
         datePickerDialog.show();
     }
+
 
     private void filterByDate(String date) {
         mAppViweModel.filterRecordsByDate(date).observe(this, new Observer<List<Records>>() {
