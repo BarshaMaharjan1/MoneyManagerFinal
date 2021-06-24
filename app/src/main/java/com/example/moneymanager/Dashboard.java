@@ -209,11 +209,39 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         });
 
         txtConfirm.setOnClickListener(view1 -> {
+            updateCapitalAmount(edtAmt.getText().toString(),records.getType(),records.getAmount());
             mAppViweModel.updateRecords(new Records(records.getId(), records.getManagerId(), edtAmt.getText().toString(), txtCal.getText().toString(), records.getType(), records.getMonth()));
             dialog.dismiss();
         });
 
         txtCancel.setOnClickListener(view12 -> dialog.dismiss());
+
+    }
+    private void updateCapitalAmount(String amount, String type, String prevAmount) {
+        Records records = mAppViweModel.fetchInitialCapital();
+        double capital = Double.parseDouble(records.getAmount());
+        double amt = Double.parseDouble(amount);
+        double prev = Double.parseDouble(prevAmount);
+        double finalAmt = 0.0;
+        if (type.equalsIgnoreCase("income")) {
+            if (prev > amt) {
+                double diff = prev - amt;
+                finalAmt = capital - diff;
+            } else {
+                double sum = amt - prev;
+                finalAmt = capital + sum;
+            }
+        } else {
+            if (prev > amt) {
+                double sum = prev - amt;
+                finalAmt = capital + sum;
+            }else{
+                double diff = amt - prev;
+                finalAmt = capital - diff;
+            }
+        }
+        mAppViweModel.updateCapitalBudget(new Records(records.getId(), records.getManagerId(), String.valueOf(finalAmt), records.getDate(), records.getType(),records.getMonth()));
+
 
     }
 

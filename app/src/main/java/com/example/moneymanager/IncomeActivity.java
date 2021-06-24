@@ -31,7 +31,7 @@ import com.example.moneymanager.viewmodel.AppViewModel;
 import java.util.Calendar;
 import java.util.List;
 
-public class IncomeActivity extends AppCompatActivity {
+public class   IncomeActivity extends AppCompatActivity {
     Toolbar toolbarA;
     RecyclerView recyclerView;
     AppViewModel mAppViweModel;
