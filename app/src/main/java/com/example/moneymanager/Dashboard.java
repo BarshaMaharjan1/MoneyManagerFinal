@@ -110,7 +110,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerview.setLayoutManager(manager);
 
-        NavigationView navigationView=(NavigationView)findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -209,14 +209,16 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         });
 
         txtConfirm.setOnClickListener(view1 -> {
-            updateCapitalAmount(edtAmt.getText().toString(),records.getType(),records.getAmount());
-            mAppViweModel.updateRecords(new Records(records.getId(), records.getManagerId(), edtAmt.getText().toString(), txtCal.getText().toString(), records.getType(), records.getMonth()));
+            updateCapitalAmount(edtAmt.getText().toString(), records.getType(), records.getAmount());
+            mAppViweModel.updateRecords(new Records(records.getId(), records.getManagerId(),
+                    edtAmt.getText().toString(), txtCal.getText().toString(), records.getType(), txtCal.getText().toString().substring(5,7)));
             dialog.dismiss();
         });
 
         txtCancel.setOnClickListener(view12 -> dialog.dismiss());
 
     }
+
     private void updateCapitalAmount(String amount, String type, String prevAmount) {
         Records records = mAppViweModel.fetchInitialCapital();
         double capital = Double.parseDouble(records.getAmount());
@@ -235,12 +237,12 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             if (prev > amt) {
                 double sum = prev - amt;
                 finalAmt = capital + sum;
-            }else{
+            } else {
                 double diff = amt - prev;
                 finalAmt = capital - diff;
             }
         }
-        mAppViweModel.updateCapitalBudget(new Records(records.getId(), records.getManagerId(), String.valueOf(finalAmt), records.getDate(), records.getType(),records.getMonth()));
+        mAppViweModel.updateCapitalBudget(new Records(records.getId(), records.getManagerId(), String.valueOf(finalAmt), records.getDate(), records.getType(), records.getMonth()));
 
 
     }
@@ -372,7 +374,9 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         }
     }
+
     String updateDate;
+
     private void displayCalendar() {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
@@ -382,21 +386,19 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             m++;
             String month1 = m < 10 ? "0" + m : m + "";
             String day1 = d < 10 ? "0" + d : d + "";
-            updateDate =  y + "-" + month1 + "-" + day1;
+            updateDate = y + "-" + month1 + "-" + day1;
         }, year, month, day);
         datePickerDialog.show();
     }
 
 
     private void filterByDate(String date) {
-        mAppViweModel.filterRecordsByDate(date).observe(this, new Observer<List<Records>>() {
-            @Override
-            public void onChanged(List<Records> records) {
-                adapter.setFilteredValue(records);
-                adapter.notifyDataSetChanged();
-            }
-        });
+        List<Records> records = mAppViweModel.filterRecordsByDate(date);
+
+        adapter.setFilteredValue(records);
+        adapter.notifyDataSetChanged();
     }
+
 
     private void signOut() {
 
@@ -412,6 +414,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        String itemName = (String) item.getTitle();
         closeDrawer();
         Intent intent;
         switch (item.getItemId()) {

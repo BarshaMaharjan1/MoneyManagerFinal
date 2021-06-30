@@ -13,7 +13,7 @@ import com.example.moneymanager.pojos.Records;
 
 import java.util.List;
 
-public class RecordsAdapter extends RecyclerView.Adapter {
+public class RecordsAdapter extends RecyclerView.Adapter<RecordsAdapter.RecordsHolder> {
     private List<Records> data;
     private final RecordsCallback callback;
 
@@ -24,23 +24,23 @@ public class RecordsAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecordsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_records_data_item,parent,false);
         return (new RecordsHolder(view));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecordsHolder holder, int position) {
         Records records = data.get(position);
-        amount.setText("NPR "+records.getAmount());
-        date.setText(records.getDate());
-        menu.setOnClickListener(new View.OnClickListener() {
+        holder.amount.setText("NPR "+records.getAmount());
+        holder.date.setText(records.getDate());
+        holder.menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 callback.onMenuSelected(records,holder);
             }
         });
-        callback.updateItemData(title,icon,records,position);
+        callback.updateItemData(holder.title,holder.icon,records,position);
     }
 
     @Override
@@ -58,15 +58,15 @@ public class RecordsAdapter extends RecyclerView.Adapter {
         return position;
     }
 
-    AppCompatTextView title,date,amount;
-    AppCompatImageView menu,icon;
 
     public void setFilteredValue(List<Records> records) {
         this.data = records;
         notifyDataSetChanged();
     }
 
-    private class RecordsHolder extends RecyclerView.ViewHolder {
+    class RecordsHolder extends RecyclerView.ViewHolder {
+        AppCompatTextView title, date, amount;
+        AppCompatImageView menu, icon;
         public RecordsHolder(View view) {
             super(view);
 

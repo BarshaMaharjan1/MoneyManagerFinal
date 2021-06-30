@@ -55,7 +55,7 @@ public class AppViewModel extends AndroidViewModel {
         return mAppRepository.fetchInitialCapital();
     }
 
-    public LiveData<List<Records>> filterRecordsByDate(String date) {
+    public List<Records> filterRecordsByDate(String date) {
         return mAppRepository.filterRecordsByDate(date);
     }
 

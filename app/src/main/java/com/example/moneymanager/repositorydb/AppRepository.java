@@ -60,7 +60,7 @@ public class AppRepository {
         return recordsDao.fetchInitialCapital();
     }
 
-    public LiveData<List<Records>> filterRecordsByDate(String date) {
+    public List<Records> filterRecordsByDate(String date) {
         return recordsDao.filterRecordsByDate(date);
     }
 

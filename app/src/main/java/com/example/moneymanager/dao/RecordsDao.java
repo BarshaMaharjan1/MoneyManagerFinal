@@ -37,8 +37,8 @@ public interface RecordsDao {
     @Query("select * from tbl_records where type='initial'")
     Records fetchInitialCapital();
 
-    @Query("select * from tbl_records where month=:date")
-    LiveData<List<Records>> filterRecordsByDate(String date);
+    @Query("select * from tbl_records where month=:date and type != 'initial'")
+    List<Records> filterRecordsByDate(String date);
 
     @Query("select distinct(managerId) from tbl_records")
     List<Integer> fetchDistinctIdFromRecords();
