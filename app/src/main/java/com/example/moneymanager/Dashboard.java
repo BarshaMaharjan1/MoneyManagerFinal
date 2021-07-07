@@ -407,8 +407,11 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(Dashboard.this, "Logout successfully", Toast.LENGTH_SHORT).show();
+                        utils.deleteUserDatas();
+                        utils.saveFirstLogin(true);
                     }
                 });
+
     }
 
 

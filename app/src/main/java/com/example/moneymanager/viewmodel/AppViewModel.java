@@ -84,7 +84,7 @@ public class AppViewModel extends AndroidViewModel {
     }
 
     public void deleteAllDatas() {
-        mAppRepository.deleteManager();
+        //mAppRepository.deleteManager();
         mAppRepository.deleteAllRecords();
     }
 }
